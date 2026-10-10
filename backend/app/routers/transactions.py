@@ -34,7 +34,7 @@ def create_transaction(data: schemas.TransactionCreate, db: Session = Depends(ge
 
 @router.get("", response_model=schemas.TransactionPage)
 def list_transactions(
-    month: str | None = Query(default=None, pattern=r"^\d{4}-(0[1-9]|1[0-2])$"),
+    month: str | None = Query(default=None, pattern=r"^[12]\d{3}-(0[1-9]|1[0-2])$"),
     category_id: int | None = None,
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=20, ge=1, le=100),

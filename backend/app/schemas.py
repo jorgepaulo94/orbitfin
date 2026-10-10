@@ -47,3 +47,20 @@ class TransactionPage(BaseModel):
     total: int
     page: int
     page_size: int
+
+    
+
+class CategoryTotal(BaseModel):
+    category_id: int
+    category: str
+    total_cents: int
+
+
+class MonthlySummary(BaseModel):
+    month: str
+    income_cents: int
+    expense_cents: int
+    balance_cents: int
+    by_category: list[CategoryTotal]
+    biggest_expense: TransactionOut | None
+    
