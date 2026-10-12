@@ -26,3 +26,16 @@ class Transaction(Base):
     category_id: Mapped[int] = mapped_column(ForeignKey("categories.id"))
 
     category: Mapped[Category] = relationship(back_populates="transactions")
+
+    
+
+class Budget(Base):
+    __tablename__ = "budgets"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    category_id: Mapped[int] = mapped_column(ForeignKey("categories.id"), unique=True)
+    limit_cents: Mapped[int]
+
+    category: Mapped[Category] = relationship()
+
+    

@@ -63,4 +63,26 @@ class MonthlySummary(BaseModel):
     balance_cents: int
     by_category: list[CategoryTotal]
     biggest_expense: TransactionOut | None
+
+    
+
+class BudgetSet(BaseModel):
+    limit_cents: int = Field(gt=0)
+
+
+class BudgetOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    category_id: int
+    limit_cents: int
+
+
+class BudgetStatus(BaseModel):
+    category_id: int
+    category: str
+    limit_cents: int
+    spent_cents: int
+    remaining_cents: int
+    percent_used: int
+    status: Literal["ok", "warning", "over"]
     
