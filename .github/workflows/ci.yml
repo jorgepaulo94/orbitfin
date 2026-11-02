@@ -14,6 +14,9 @@ jobs:
     defaults:
       run:
         working-directory: backend
+    env:
+      # Chave descartável, só para o CI. A chave de verdade fica no seu .env local.
+      SECRET_KEY: ci-chave-descartavel-so-para-testes-0123456789
     steps:
       - uses: actions/checkout@v5
 
@@ -34,5 +37,8 @@ jobs:
 
       - name: Rodar os testes
         run: python -m pytest -q
+
+      
+
 
         
